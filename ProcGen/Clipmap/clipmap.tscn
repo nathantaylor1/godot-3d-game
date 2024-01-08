@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgcglkjccswpx"]
+
+[ext_resource type="Script" path="res://ProcGen/Clipmap/clipmap.gd" id="1_klm8c"]
+
+[node name="Clipmap" type="Node3D"]
+script = ExtResource("1_klm8c")

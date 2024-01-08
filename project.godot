@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Downloads"
-run/main_scene="res://temp_world.tscn"
+config/name="3D PS1 Style Game"
+run/main_scene="res://Scenes/temp_world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Heightmap="*res://ProcGen/Heightmap/heightmap.gd"
 
 [input]
 
@@ -46,4 +50,27 @@ jump={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
 ]
+}
+
+[shader_globals]
+
+heightmap={
+"type": "sampler2D",
+"value": "res://ProcGen/Heightmap/heightmap2.png"
+}
+amplitude={
+"type": "float",
+"value": 16.0
+}
+clipmap_partition_length={
+"type": "float",
+"value": 64.0
+}
+clipmap_position={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+lod_step={
+"type": "float",
+"value": 2.0
 }

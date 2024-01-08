@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv2nfb22pah7p"]
+
+[ext_resource type="PackedScene" uid="uid://ycd8s5u4ot8n" path="res://Prefabs/player.tscn" id="1_20mss"]
+[ext_resource type="Script" path="res://ProcGen/Terrain.gd" id="2_vcf22"]
+[ext_resource type="PackedScene" uid="uid://cgcglkjccswpx" path="res://ProcGen/Clipmap/clipmap.tscn" id="2_xisy8"]
+[ext_resource type="PackedScene" uid="uid://c8xrv7p504ja6" path="res://ProcGen/Collisionmap/collisionmap.tscn" id="3_54m57"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ky876"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_nliv7"]
+sky_material = SubResource("ProceduralSkyMaterial_ky876")
+
+[sub_resource type="Environment" id="Environment_smrgc"]
+background_mode = 2
+sky = SubResource("Sky_nliv7")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_smrgc")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_20mss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("2_vcf22")
+
+[node name="Collisionmap" parent="Terrain" node_paths=PackedStringArray("physics_body") instance=ExtResource("3_54m57")]
+physics_body = NodePath("../../CharacterBody3D")
+
+[node name="Clipmap" parent="Terrain" node_paths=PackedStringArray("player_character") instance=ExtResource("2_xisy8")]
+player_character = NodePath("../../CharacterBody3D")
