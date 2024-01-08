@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bhjiawbup8c4a"]
+
+[ext_resource type="Shader" path="res://Terrain.gdshader" id="1_543k1"]
+[ext_resource type="Texture2D" uid="uid://uh528703gcon" path="res://Textures/grass_03.png" id="2_p2wjc"]
+[ext_resource type="Texture2D" uid="uid://bwdye2p4beylm" path="res://Textures/gravel_05.png" id="3_qmgak"]
+[ext_resource type="Texture2D" uid="uid://d3v5sofoijixn" path="res://Textures/sand_01.jpg" id="4_8a28o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_543k1")
+shader_parameter/min_rock_slope = 0.5
+shader_parameter/max_grass_slope = 0.9
+shader_parameter/grass_texture = ExtResource("2_p2wjc")
+shader_parameter/rocks_texture = ExtResource("3_qmgak")
+shader_parameter/sand_texture = ExtResource("4_8a28o")
